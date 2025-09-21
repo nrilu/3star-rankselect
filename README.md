@@ -1,17 +1,17 @@
 # 3star-rankselect
 This is the accompanying source-code to **Theory Meets Practice for Bit Vectors Supporting Rank and Select** (arXiv link)
 
-The new 3* structure is implemented in ```m3.hpp```  (Query and Summary-Tree construction) and ```Tree3.hpp``` (Sample-Tree construction).
+The new 3* structure is implemented in ```m3.hpp``` and ```Tree3.hpp```. 
 
 # Run
-To start a simple select_1 benchmark: run 
-```./run_bitvectors.py``` in ```pybuild/```.
-Two example settings are provided.
+To start an exemplary benchmark of *select_1* queries, run 
+
+```./run_bitvectors.py``` within the ```pybuild/``` folder.
+
+Two example settings are provided, the full example run should take around a minute.
 
 
-Live results are shown after starting ```./run_bitvectors.py```. In particular, the column "query" contains the average query time and the column "overhead" the space overhead of all introduced structures.
- 
-Logged results are found in the folder ```multibench_out/```. Runtime is stored in the field "t(ns)", and overhead in "overhead_percent" (among many other logged statistics).
+In the live results, the query time and space overhead are directly shown. The results are also logged to ```multibench_out/```. Query time is stored in the field **t(ns)**, and overhead in **overhead_percent**.
 
 
 
