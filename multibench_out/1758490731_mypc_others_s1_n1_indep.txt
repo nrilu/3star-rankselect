@@ -1,0 +1,85 @@
+Sweep 
+-bvname           =['rank9sel,simple_s1,pastaflat,sdsl_mcl']
+
+Base Command-Line Params
+-benching_axis    =ratio
+-bvname           =m3
+-job              =multibench
+-bitgen           =indep
+-qtype            =random
+-nbits            =1
+-selects          =0
+-select0s         =0
+-select1s         =2e7
+-ranks            =0
+-iterations       =1
+-instances        =1
+-01ratio          =1,4,49
+-folder_out       =../multibench_out/
+-invert_all       =0
+-alpha            =16
+-tree3-strat      =4
+-summary-levels   =1
+-bv-compression   =0
+
+Base Compile Config 
+MYCOMPILER        =clang
+OPTIMIZE          =3
+BENCHING_AXIS     =1
+TREE_TYPE         =3
+CUSTOM_L0         =2048
+CHECK_ALL_DENSE_SPARSE=0
+COUNT_HIT_TYPES   =0
+ALIGN             =1
+HUGEPAGES         =1
+PREFETCH_NT       =1
+PREFETCH_T0       =1
+REVERSE           =2
+POP               =2
+SCAN              =2
+EXTRACT           =4
+L1MINISKIP        =1
+INCL_LAST_L2      =1
+INV_POP_SELECT0   =0
+AVOID_PDEP        =0
+PACK_TREE         =0
+PACK_EXPL         =0
+TREE_EXP_LVL0     =19
+TREE_DIV          =3
+TREE_MAX_SUPERBLOCKS=50
+DEFAULT_TREE_INV_EXPL_OVHD=1000
+BBRANCHLESS       =0
+LOAD_PASTA        =0
+LOAD_SDSL         =0
+LOAD_SUX          =0
+LOAD_POPPY        =0
+RRR_BLOCKSIZE     =31
+SAMPL_EXPOS       =0
+WARMUP_ROUNDS     =0
+FORCE_CRIT_PATH   =1
+ASM_OUTPUT        =0
+CHECK_DELTAW      =0
+CMAKE_SAMPL_EXP   =0
+SHOW_WARNINGS     =0
+NDEBUG            =1
+SILENT            =1
+EVEN_MORE_SILENT  =1
+CLANG_PATH        =/usr/bin/clang
+CLANGPP_PATH      =/usr/bin/clang++
+GCC_PATH          =/usr/bin/gcc
+GPP_PATH          =/usr/bin/g++
+USE_CLANG_LIBC    =0
+
+ 
+RESULT DATE=Sun_Sep_21_23:39:45_2025 BVNAME=rank9sel BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=8164 t(ns)=87.963 overhead_percent=56.2501 synth_01ratio=1 density=0.499996 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1562500864 eff_01ratio=1.00002 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=500004300 N_ones=499995700 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=101 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:00_2025 BVNAME=simple_s1 BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=12584 t(ns)=90.58 overhead_percent=2.34388 synth_01ratio=1 density=0.499996 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1023438784 eff_01ratio=1.00002 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=500004300 N_ones=499995700 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=101 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:04_2025 BVNAME=pastaflat BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=7 t(ns)=96.848 overhead_percent=3.58 synth_01ratio=1 density=0.499996 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1035800000 eff_01ratio=1.00002 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=500004300 N_ones=499995700 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=101 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:10_2025 BVNAME=sdsl_mcl BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=141 t(ns)=84.625 overhead_percent=23.6323 synth_01ratio=1 density=0.499996 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1236323264 eff_01ratio=1.00002 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=500004300 N_ones=499995700 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=101 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:17_2025 BVNAME=rank9sel BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=4463 t(ns)=90.513 overhead_percent=52.5002 synth_01ratio=4 density=0.200004 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1525001856 eff_01ratio=3.99991 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=799996364 N_ones=200003636 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=102 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:25_2025 BVNAME=simple_s1 BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=6748 t(ns)=76.173 overhead_percent=3.75022 synth_01ratio=4 density=0.200004 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1037502208 eff_01ratio=3.99991 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=799996364 N_ones=200003636 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=102 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:29_2025 BVNAME=pastaflat BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=7 t(ns)=94.19 overhead_percent=3.58 synth_01ratio=4 density=0.200004 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1035800000 eff_01ratio=3.99991 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=799996364 N_ones=200003636 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=102 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:33_2025 BVNAME=sdsl_mcl BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=134 t(ns)=87.128 overhead_percent=23.4768 synth_01ratio=4 density=0.200004 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1234767552 eff_01ratio=3.99991 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=799996364 N_ones=200003636 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=102 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:37_2025 BVNAME=rank9sel BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=1235 t(ns)=89.954 overhead_percent=50.2502 synth_01ratio=49 density=0.0200018 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1502501632 eff_01ratio=48.9955 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=979998186 N_ones=20001814 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=103 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:41_2025 BVNAME=simple_s1 BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=2104 t(ns)=87.135 overhead_percent=3.00042 synth_01ratio=49 density=0.0200018 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1030004224 eff_01ratio=48.9955 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=979998186 N_ones=20001814 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=103 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:46_2025 BVNAME=pastaflat BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=7 t(ns)=144.171 overhead_percent=3.58 synth_01ratio=49 density=0.0200018 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1035800000 eff_01ratio=48.9955 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=979998186 N_ones=20001814 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=103 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)
+RESULT DATE=Sun_Sep_21_23:40:51_2025 BVNAME=sdsl_mcl BITGEN=indep synth_bits=1000000000 curr_instance=0 CUSTOM_L0=2048 ALPHA=16 tree3-strat=4 generate(s)=0 build(ms)=116 t(ns)=185.106 overhead_percent=23.008 synth_01ratio=49 density=0.0200018 sinperiods=71,90,81,18, sinthresh=0 total_used_space_in_bits=1230080064 eff_01ratio=48.9955 summary-levels=1 instances=1 BV_COMPRESSION=0 z-search-strat=1 theo_a_exp=0 theo_b_exp=0 a_exp=0 b_exp=0 topgroups=0 midgroups=0 botgroups=0 parameter_cycles=16 curr_parameter_cycle=0 theo_worstcase_tree_size_bits=0 theo_actual_tree_size_bits=0 final_tree_size_bits=0 theo_worstcase_tree_size_factor=0 theo_actual_tree_size_factor=0 final_tree_size_factor=0 N_zeros=979998186 N_ones=20001814 N_bits=1000000000 BIMODAL_FACTOR=500 MAX_SPARSE=186 seed=103 invert_all_bits=0 bench_iterations=1 shadow=0 access=0 rank0=0 rank1=0 select0=0 select1=20000000 TREE_TYPE=3 COUNT_HIT_TYPES=0 CHECK_ALL_DENSE_SPARSE=0 BENCHING_AXIS=1 FORCE_CRIT_PATH=1 WARMUP_ROUNDS=0 SCAN=2 EXTRACT=4 REVERSE=2 POP=2 PREFETCH_NT=1 PREFETCH_T0=1 HUGEPAGES=1 ALIGN=1 RRR_BLOCKSIZE=31 -march=native -DNDEBUG=1 OPTIMIZE=3 CPU=13th_Gen_Intel(R)_Core(TM)_i9-13900H Compiler=Clang_18.1.3_(1ubuntu1)

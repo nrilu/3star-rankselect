@@ -4,146 +4,62 @@ from typing import Dict, Union
 import os, time, subprocess
 from itertools import product
 
-#Reference
-my_names    = ["m2","m5","m7","m2-8","m3"]
+
+my_names    = ["m3"]
 pasta_names = ["pastaflat"]
 sdsl_names  = ["sdsl_sd", "sdsl_rrr", "sdsl_mcl", "sdsl_v1","sdsl_v5"]
 poppy_names = ["poppy", "poppy2"]
-sux_names   = ["rank9sel", "simple_s"]
+sux_names   = ["rank9sel", "simple_s0", "simple_s1", "simple_s2", "simple_s3"]
 
-comment = ""
-folder = ""
-
-#Default Command line parameters
 base_params = {
     "-benching_axis": "ratio",
-    "-bvname": "m3",        #Algorithm-Selection. m3: the new 3-star structure. 
-    "-job":    "multibench", 
-    "-bitgen": "indep",     #Instance selection. Indep: independent bits.
-    "-qtype":  "random",    #Query type selection.
-    "-nbits":    "1",       #Instance size, in units of 10^9. Here small example with 1e9 bits.
-    # "-nbits":    "1,8,64",  
+    "-bvname": "m3",
+    "-job":    "multibench",
+    "-bitgen": "indep",      #Choose independen bit instance (alternative is "sin", for sinusoidally based interference instances)
+    "-qtype":  "random",     #Do Random queries 
+    "-nbits":    "1",        #Chose number of bits in units 10^9
     "-selects":  "0",
     "-select0s": "0",
-    "-select1s": "2e7",     #Do 20 Mio select_1
+    "-select1s": "2e7",
     "-ranks":    "0",
-    "-iterations": "1",
+    "-iterations": "1",      #Choose number of iterations, for statistical security. For quick test run set to 1 
     "-instances":  "1",
-    "-01ratio":"1,9,99", #Instance densities. Here small example 50%, 10%, 1%,
-    # "-01ratio":"1,2,4,9,19,32,49,99", #50%, 33%, 20%, 10%, 5%, 3%, 2%, 1%
+    "-01ratio":"1,4,49", #Choose ratio of Zeros to Ones. A ratio 3 corresponds to a density of 25%. 
     "-folder_out":  "../multibench_out/",
-    "-parameter_cycles":"18", 
     "-invert_all": "0",
-    "-alpha" : "16",
-    "-tree3-strat" : "4",#Choice of parameter "a" for 3* structure:  2=a*, 4=a_dense, 5=a_min, 6=a_fast
-    "-summary-levels": "1",
-    "-z-search-strat" : "1",
-    "-bv-compression" : "0", #Experimental bitvector-compression
+    "-alpha" : "16",            # Choose The 3* Alpha parameter
+    "-tree3-strat" : "4",       # Choose strategy for calculating a and b. 2=a*, 4=a_fast, 5=a_min
+    "-summary-levels": "1",     # Choose a value in [1,2], corresponds to k=2 and k=3 summary levels
+    "-bv-compression" : "0",    # Choose whether to activate the preliminiary bitvector compression
 }
 
 
-#Command-line parameters (starting with -):  Passed as one long string, values divided by comma
-#Compile time parameters (UPPERCASE): Passed as individual entries in a list
+#Command-line options: Single string, with commata between entries
+#Compile-time options: List of values
 
 sweep_choices1 : Dict[str, Union[str,list]] = {
-    "-bvname" : "m3,sdsl_sd,sdsl_mcl,rank9sel,simple_s1,simple_s3",
+    "-bvname" : "m3",
+    "CUSTOM_L0": [512,2048],   #Test L0=512 and L0=2048
+    "-tree3-strat" : "4", #Test with a = a_fast strategy
+    "-alpha" : "8",  # Test alpha=8 
+    # "-alpha" : "2,8,32",  # Test different alpha
+    # "-summary-levels": "1,2",
+    # "-bv-compression" : "0,1",
+    # "-01ratio":"1", 
+    # "-instances":  "1",
+    # "-nbits":  "1,2,4,8",  
+
 }
 
 sweep_choices2 : Dict[str, Union[str,list]] = {
-    # INDEP
-    # "CUSTOM_L0": [2048],
-    # "-tree3-strat" : "2",#
-    # "-alpha" : "16",
-    # "-summary-levels": "1",
-    # "-bv-compression" : "0,1",
-
-    # "-bvname" : "m3",
-    # "-bitgen": "gap",  # indep, bimodal, chunky, sin
-    # "-gap-size" : "1000,10000,100000,1000000,10000000,100000000",
-    # "-gap-size" : "300,3000,30000,300000,3000000,30000000",
-    # "-01ratio":"1", 
-    # "-instances":  "1",
-    # "-nbits":  "8",  # 1,2,4,8,16,32,64 (in units of 10^9)
-}
-
-sweep_choices3 : Dict[str, Union[str,list]] = {
-    #INDEP
-    # "CUSTOM_L0": [2048],
-    # "-tree3-strat" : "4",#
-    # "-alpha" : "8",
-    # "-summary-levels": "2",
-    # "-bv-compression" : "0,1",
-
-    # "-bvname" : "m3",
-    # "-bitgen": "gap",  # indep, bimodal, chunky, sin
-    # "-gap-size" : "1000,10000,100000,1000000,10000000,100000000",
-    # "-gap-size" : "300,3000,30000,300000,3000000,30000000",
-    # "-01ratio":"1", 
-    # "-instances":  "1",
-    # "-nbits":  "8",  # 1,2,4,8,16,32,64 (in units of 10^9)
-}
-
-sweep_choices4 : Dict[str, Union[str,list]] = {
-    #INDEP
-    # "CUSTOM_L0": [2048],
-    # "-tree3-strat" : "5",#
-    # "-alpha" : "32",
-    # "-summary-levels": "1",
-    # "-bv-compression" : "0,1",
-
-    # "-bvname" : "m3",
-    # "-bitgen": "gap",  # indep, bimodal, chunky, sin
-    # "-gap-size" : "1000,10000,100000,1000000,10000000,100000000",
-    # "-gap-size" : "300,3000,30000,300000,3000000,30000000",
-    # "-01ratio":"1", 
-    # "-instances":  "1",
-    # "-nbits":  "8",  # 1,2,4,8,16,32,64 (in units of 10^9)
-
-    # SINUS 20
-    # "-bitgen": "sin",  # indep, bimodal, chunky, sin
-    # "CUSTOM_L0": [512],
-    # "-tree3-strat" : "2,4,5",
-    # "-instances":  "20",
-    # "-alpha" : "1,2,4,8,16,32,64",
-    # "-01ratio":"1,2,4,6,9,13,19,32,49,65,99,199", 
-    # "-bvname" : "m3,simple_s0,simple_s1,simple_s2,simple_s3,simple_s4,rank9sel,sdsl_sd,sdsl_mcl,pastaflat",
+    # Also Test some competitors on the same instance
+    "-bvname" : "rank9sel,simple_s1,pastaflat,sdsl_mcl",
+    # "-01ratio":"1,9,99", 
 }
 
 
-sweep_choices5 : Dict[str, Union[str,list]] = {
-    # GAP GADGET
 
-    #RANK
-
-    # "-bvname" : "pastaflat,rank9sel,poppy2,sdsl_v1,sdsl_v5",
-    # "-bvname" : "m3",
-    # "-bitgen": "gap",  # indep, bimodal, chunky, sin
-    # "-gap-size" : "1000,10000,100000,1000000,10000000,100000000",
-    # "-01ratio":"1", 
-    # "-instances":  "1",
-    # "-nbits":  "8",  # 1,2,4,8,16,32,64 (in units of 10^9)
-    # "-alpha" : "1,2,4,8,16,32,64",
-    # "-tree3-strat" : "2,4,5",
-    # "CUSTOM_L0": [512,1024,2048],
-}
-
-
-sweep_choices6 : Dict[str, Union[str,list]] = {
-    # GAP GADGET
-    # "-bvname" : "simple_s0,simple_s1,simple_s2,simple_s3,rank9sel,sdsl_sd,sdsl_mcl,pastaflat",
-    # "-bitgen": "gap",  # indep, bimodal, chunky, sin
-    # "-gap-size" : "1000,10000,100000,1000000,10000000,100000000",
-    # "-gap-size" : "300,3000,30000,300000,3000000,30000000",
-    # "-01ratio":"1", 
-    # "-instances":  "1",
-    # "-nbits":  "8",  # 1,2,4,8,16,32,64 (in units of 10^9)
-    # "-alpha" : "8",
-    # "-tree3-strat" : "2",
-    # "CUSTOM_L0": [1024],
-}
-
-
-#Compile time cmake parameters
+#Compile time cmake parameters. Typicall not needed to change them
 base_config: Dict[str, Union[str,int]] = {
     "MYCOMPILER": "clang",
     "OPTIMIZE" : 3, 
@@ -168,11 +84,12 @@ base_config: Dict[str, Union[str,int]] = {
     "INV_POP_SELECT0": 0,
     "AVOID_PDEP": 0,
 
-    "PACK_TREE" : 0, #removed from m2 in favor of hardcoded 32-bit words
-    "PACK_EXPL" : 0,#specifically pack the explicit array
-    "TREE_EXP_LVL0" :19, #sampling dist when using tree
+    #Legacy for old uncompressed tree
+    "PACK_TREE" : 0, 
+    "PACK_EXPL" : 0,
+    "TREE_EXP_LVL0" :19, 
     "TREE_DIV" : 3, 
-    "TREE_MAX_SUPERBLOCKS" : 50,   #[10,20,40,80,160,320]
+    "TREE_MAX_SUPERBLOCKS" : 50,   
     "DEFAULT_TREE_INV_EXPL_OVHD" : 1000, 
     "BBRANCHLESS" : 0,
 
@@ -183,7 +100,6 @@ base_config: Dict[str, Union[str,int]] = {
 
     "RRR_BLOCKSIZE" : 31,#sdsl_rrr's block size parameter
     "SAMPL_EXPOS" : 0, #pasta's sampling rate exponent. Leaving at 0 leaves it at default 2^13=8192
-    # "DEFAULT_SIMPLE_SELECT_PARAM" : 3, #sux simple_select's tuning parameter
 
     "WARMUP_ROUNDS" : 0, 
     "FORCE_CRIT_PATH" : 1, 
@@ -202,8 +118,7 @@ base_config: Dict[str, Union[str,int]] = {
     "USE_CLANG_LIBC": 0,
 }
 
-sweep_choice_list = [sweep_choices1, sweep_choices2, sweep_choices3,
-                     sweep_choices4, sweep_choices5, sweep_choices6]
+sweep_choice_list = [sweep_choices1, sweep_choices2]
 automatic_compiler_paths = 1
 clean_build  = True
 show_warnings= False
@@ -220,28 +135,8 @@ RUN=1
 
 
 ############## start of automatic script #####################
-
+folder =""
 status_track = {}
-
-def get_cpu_alias():
-    alias_from_full= {"":"vb",
-                     "feigenbaum":"fg",
-                     "hellman"   :"hl",
-                     "blum"      :"bl",
-                     "yao"       :"yo",
-                     "dijkstra"  :"dij",
-                     "cook"      :"ck",
-                     "karp"      :"kp",
-                     "hamming"   :"hg",
-                     "hoare"     :"ho",
-                     "diffie"    :"dif"}
-    fullname = subprocess.run("echo $SLURM_NODELIST",   shell=True, capture_output=True, text=True).stdout.strip()
-    alias = alias_from_full.get(fullname)
-    if alias is None:
-        alias = fullname
-    print("fullname",fullname)
-    print("alias", alias)
-    return alias, fullname
 
 
 def get_query_alias():
@@ -251,22 +146,13 @@ def get_query_alias():
     if base_params["-ranks"] != "0": return "r"
     return "mixed_queries"
 
-cpu_alias,fullname   = get_cpu_alias()
+        
+cpu_alias ="mypc"
+fullname=""
 query_alias = get_query_alias() 
-
-if folder!="":
-    if folder=="+":
-        folder = cpu_alias + "-" + query_alias + "e" + base_params["-nbits"]+"-"+base_params["-bitgen"]
-    path = "../multibench_out/"+folder+"/"
-    base_params["-folder_out"] = path
-    try:
-        os.mkdir(path)
-    except:
-        print("Folder already there")
 
 def cmake_flags_from_dict(config: dict) -> list[str]:
     return [f"-D{key}={value}" for key, value in config.items()]
-
 
 def run_config(config: Dict[str, Union[str,int]], params : Dict[str, str], tag, progress, sweep_overview : Dict[str, Union[str,list]] = {}):
     params["-progress"] = str(progress)
@@ -288,7 +174,6 @@ def run_config(config: Dict[str, Union[str,int]], params : Dict[str, str], tag, 
         config["GCC_PATH"] = subprocess.run("which gcc", shell=True, capture_output=True, text=True).stdout.strip()
         config["GPP_PATH"] = subprocess.run("which g++", shell=True, capture_output=True, text=True).stdout.strip()
 
-    cpu_alias,fullname   = get_cpu_alias()
     if(fullname!=""): #i.e. we are on the server
         config["USE_CLANG_LIBC"]=1 #for the server
 
@@ -301,8 +186,6 @@ def run_config(config: Dict[str, Union[str,int]], params : Dict[str, str], tag, 
     query_alias = get_query_alias() 
     bitgen_alias = params["-bitgen"]
     filename = cpu_alias+"_"+bv_alias+"_"+query_alias+"_n"+params["-nbits"]+"_"+bitgen_alias
-    if comment != "":
-        filename +="-"+comment
     if folder=="":
         filename = tag+"_"+filename
     params["-filename_out"] = filename
@@ -326,9 +209,6 @@ def run_config(config: Dict[str, Union[str,int]], params : Dict[str, str], tag, 
         offs = offs + offs%2
         print(f"{key.ljust(max_key_length - offs)} {value}")
     
-    # if(ASM_OUTPUT):
-        # llvm = "llvm-mca -timeline -bottleneck-analysis -output-asm-variant=1 bv.s > llvm.txt"
-        # os.system(llvm)
 
     os.system(cmake_cmd)
     os.system(build_cmd)
@@ -359,12 +239,27 @@ def write_sweep_overview(filename, sweep_overview):
         f.write("\n \n")
 
 
+repos = {
+    "sdsl-lite": "https://github.com/simongog/sdsl-lite.git",
+    "sux": "https://github.com/vigna/sux.git",
+    "rankselect": "https://github.com/efficient/rankselect.git",
+    "rankselect2": "https://github.com/pasta-toolbox-forks/rankselect2.git"
+}
+
+def clone_repos(target_dir):
+    if not os.path.exists(target_dir):
+        os.makedirs(target_dir)
+
+    for folder_name, repo_url in repos.items():
+        repo_path = os.path.join(target_dir, folder_name)
+        if os.path.exists(repo_path):
+            print(f"[OK] Repository '{folder_name}' already exists at {repo_path}")
+        else:
+            print(f"[CLONE] Cloning {repo_url} into {repo_path}")
+            subprocess.run(["git", "clone", repo_url, repo_path], check=True)
+
 def run_sweep():
     tag = str(int(time.time()))
-    # for bvname in bvname_list:
-    #     params = cl_params_dict.copy()
-    #     params["-bvtype"] = bvname
-    #     if bvname in my_names:
     for sweep_choices in sweep_choice_list:
         status_track['sweep_overview_written_to_file'] =  False
         for key, value in sweep_choices.items(): 
@@ -390,5 +285,6 @@ def run_sweep():
                     config.update({key : value})
             run_config(config, params, tag, i, sweep_choices)
 
+clone_repos("../external/")
 run_sweep()
 
