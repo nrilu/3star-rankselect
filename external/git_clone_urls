@@ -1,0 +1,4 @@
+git clone https://github.com/simongog/sdsl-lite.git
+git clone https://github.com/vigna/sux.git
+git clone https://github.com/efficient/rankselect.git
+git clone https://github.com/pasta-toolbox-forks/rankselect2.git
