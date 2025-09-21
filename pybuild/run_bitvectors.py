@@ -252,10 +252,15 @@ def clone_repos(target_dir):
     for folder_name, repo_url in repos.items():
         repo_path = os.path.join(target_dir, folder_name)
         if os.path.exists(repo_path):
-            print(f"[OK] Repository '{folder_name}' already exists at {repo_path}")
+            if os.listdir(repo_path):  # non-empty folder
+                print(f"[OK] Repository '{folder_name}' already exists at {repo_path}")
+                continue
+            else:
+                print(f"[CLONE] Folder '{repo_path}' exists but is empty. Cloning...")
         else:
             print(f"[CLONE] Cloning {repo_url} into {repo_path}")
-            subprocess.run(["git", "clone", repo_url, repo_path], check=True)
+        
+        subprocess.run(["git", "clone", repo_url, repo_path], check=True)
 
 def run_sweep():
     tag = str(int(time.time()))

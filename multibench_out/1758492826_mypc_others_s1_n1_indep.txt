@@ -1,0 +1,73 @@
+Sweep 
+-bvname           =['m3,rank9sel,simple_s1,pastaflat,sdsl_mcl']
+
+Base Command-Line Params
+-benching_axis    =ratio
+-bvname           =m3
+-job              =multibench
+-bitgen           =indep
+-qtype            =random
+-nbits            =1
+-selects          =0
+-select0s         =0
+-select1s         =2e7
+-ranks            =0
+-iterations       =1
+-instances        =1
+-01ratio          =1,4,49
+-folder_out       =../multibench_out/
+-invert_all       =0
+-alpha            =16
+-tree3-strat      =4
+-summary-levels   =1
+-bv-compression   =0
+
+Base Compile Config 
+MYCOMPILER        =clang
+OPTIMIZE          =3
+BENCHING_AXIS     =1
+TREE_TYPE         =3
+CUSTOM_L0         =2048
+CHECK_ALL_DENSE_SPARSE=0
+COUNT_HIT_TYPES   =0
+ALIGN             =1
+HUGEPAGES         =1
+PREFETCH_NT       =1
+PREFETCH_T0       =1
+REVERSE           =2
+POP               =2
+SCAN              =2
+EXTRACT           =4
+L1MINISKIP        =1
+INCL_LAST_L2      =1
+INV_POP_SELECT0   =0
+AVOID_PDEP        =0
+PACK_TREE         =0
+PACK_EXPL         =0
+TREE_EXP_LVL0     =19
+TREE_DIV          =3
+TREE_MAX_SUPERBLOCKS=50
+DEFAULT_TREE_INV_EXPL_OVHD=1000
+BBRANCHLESS       =0
+LOAD_PASTA        =0
+LOAD_SDSL         =0
+LOAD_SUX          =0
+LOAD_POPPY        =0
+RRR_BLOCKSIZE     =31
+SAMPL_EXPOS       =0
+WARMUP_ROUNDS     =0
+FORCE_CRIT_PATH   =1
+ASM_OUTPUT        =0
+CHECK_DELTAW      =0
+CMAKE_SAMPL_EXP   =0
+SHOW_WARNINGS     =0
+NDEBUG            =1
+SILENT            =1
+EVEN_MORE_SILENT  =1
+CLANG_PATH        =/usr/bin/clang
+CLANGPP_PATH      =/usr/bin/clang++
+GCC_PATH          =/usr/bin/gcc
+GPP_PATH          =/usr/bin/g++
+USE_CLANG_LIBC    =0
+
+ 
