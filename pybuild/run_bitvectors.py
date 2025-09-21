@@ -38,6 +38,12 @@ base_params = {
 #Compile-time options: List of values
 
 sweep_choices1 : Dict[str, Union[str,list]] = {
+    # Also Test some competitors on the same instance
+    "-bvname" : "rank9sel,simple_s1,pastaflat,sdsl_mcl",
+    # "-01ratio":"1,9,99", 
+}
+
+sweep_choices2 : Dict[str, Union[str,list]] = {
     "-bvname" : "m3",
     "CUSTOM_L0": [512,2048],   #Test L0=512 and L0=2048
     "-tree3-strat" : "4", #Test with a = a_fast strategy
@@ -48,13 +54,6 @@ sweep_choices1 : Dict[str, Union[str,list]] = {
     # "-01ratio":"1", 
     # "-instances":  "1",
     # "-nbits":  "1,2,4,8",  
-
-}
-
-sweep_choices2 : Dict[str, Union[str,list]] = {
-    # Also Test some competitors on the same instance
-    "-bvname" : "rank9sel,simple_s1,pastaflat,sdsl_mcl",
-    # "-01ratio":"1,9,99", 
 }
 
 
