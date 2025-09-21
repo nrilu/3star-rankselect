@@ -39,7 +39,7 @@ base_params = {
 
 sweep_choices1 : Dict[str, Union[str,list]] = {
     # Also Test some competitors on the same instance
-    "-bvname" : "rank9sel,simple_s1,pastaflat,sdsl_mcl",
+    "-bvname" : "m3,rank9sel,simple_s1,pastaflat,sdsl_mcl",
     # "-01ratio":"1,9,99", 
 }
 
