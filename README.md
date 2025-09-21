@@ -13,6 +13,6 @@ Two example settings are provided, the full example run should take around a min
 
 The query times and space overheads are shown live, and are logged to ```multibench_out/```. Query time is stored in the field **t(ns)**, and overhead in **overhead_percent**.
 
-At first run, the python script auto-downloads the competitor codes into the folder ```external/```.
+At first run, the python script auto-downloads the competitor codes and stores them in folder ```external/```.
 
   
